@@ -1,0 +1,25 @@
+.btn {
+  display: inline-block;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #b19b57;
+  padding: 14px 60px;
+  background-color: #fff;
+  line-height: 1;
+  outline: none;
+  font-size: 12px;
+  font-weight: 500;
+  border: 0;
+  transition: all 175ms linear;
+
+  &:hover {
+    background-color: #b19b57;
+    color: #fff;
+  }
+
+  &.btn-rouded {
+    border: 1px solid #b19b57;
+    border-radius: 30px;
+  }
+}

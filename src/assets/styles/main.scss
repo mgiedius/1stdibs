@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// [Core includes]
+// -----------------------------------------------------------------------------
+
+@import 'core/normalize';
+@import 'core/flexbox-grid';
+@import 'core/buttons';
+@import 'core/layout';
+@import 'core/mixins';
+
+// -----------------------------------------------------------------------------
+// [Containers includes]
+// -----------------------------------------------------------------------------
+@import 'containers/container-products-list';
+@import 'containers/container-product-single';
+
+// -----------------------------------------------------------------------------
+// [Components includes]
+// -----------------------------------------------------------------------------
+@import 'components/component-header';
+@import 'components/component-product-list';
+@import 'components/component-favorite';

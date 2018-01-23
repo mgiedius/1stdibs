@@ -1,0 +1,20 @@
+.component-product-list {
+  padding: 0 15px 30px 15px;
+
+  @include mobile {
+    padding: 0 0 1rem;
+  }
+
+  .bgcw {
+
+    .info {
+      padding: 10px 0;
+
+      div {
+        &:last-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+}
