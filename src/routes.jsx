@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -10,41 +10,37 @@ import ProductsSingle from './containers/Products/ProductsSingle';
 import Header from './components/Header';
 import NotFound from './components/NotFound';
 
-class Routes extends Component {
-  render() {
-    return (
-      <BrowserRouter>
-        <Fragment>
-          <Header />
+const Routes = ({ products, product }) => (
+  <BrowserRouter>
+    <Fragment>
+      <Header />
 
-          <Switch>
-            <Redirect exact from="/" to="/products" />
+      <Switch>
+        <Redirect exact from="/" to="/products" />
 
-            <IfNotFoundRoute
-              exact
-              path="/products/:id"
-              component={ProductsSingle}
-              isNotFound={this.props.product.error}
-            />
-            <IfNotFoundRoute
-              exact
-              path="/products"
-              component={ProductsList}
-              isNotFound={this.props.products.error}
-            />
+        <IfNotFoundRoute
+          exact
+          path="/products/:id"
+          component={ProductsSingle}
+          isNotFound={product.error}
+        />
+        <IfNotFoundRoute
+          exact
+          path="/products"
+          component={ProductsList}
+          isNotFound={products.error}
+        />
 
-            <Route component={() => (
-              <NotFound>
-                <h2>404 Page not found</h2>
-              </NotFound>
-            )}
-            />
-          </Switch>
-        </Fragment>
-      </BrowserRouter>
-    );
-  }
-}
+        <Route component={() => (
+          <NotFound>
+            <h2>404 Page not found</h2>
+          </NotFound>
+        )}
+        />
+      </Switch>
+    </Fragment>
+  </BrowserRouter>
+);
 
 Routes.propTypes = {
   products: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types

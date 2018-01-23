@@ -13,30 +13,33 @@ class Favorite extends Component {
   }
 
   componentDidMount() {
-    const favorited = JSON.parse(window.localStorage.getItem('favorited')) || [];
-    const index = favorited.indexOf(this.props.productId);
-
-    if (index > -1) {
-      this.handleFavorite();
-    }
+    this.handleFavorite((localStorage, productIndex) => {
+      if (productIndex > -1) this.handleFavoriteState();
+    });
   }
 
-  handleFavorite() {
+  handleFavorite(callback) {
+    const localStorage = JSON.parse(window.localStorage.getItem('favorited')) || [];
+    const productIndex = localStorage.indexOf(this.props.productId);
+
+    callback(localStorage, productIndex);
+  }
+
+  handleFavoriteState() {
     this.setState({ favorited: !this.state.favorited });
   }
 
   handleClick() {
-    const favorited = JSON.parse(window.localStorage.getItem('favorited')) || [];
-    const index = favorited.indexOf(this.props.productId);
+    this.handleFavorite((localStorage, productIndex) => {
+      if (productIndex > -1) {
+        localStorage.splice(productIndex, 1);
+      } else {
+        localStorage.push(this.props.productId);
+      }
 
-    if (index > -1) {
-      favorited.splice(index, 1);
-    } else {
-      favorited.push(this.props.productId);
-    }
-
-    window.localStorage.setItem('favorited', JSON.stringify(favorited));
-    this.handleFavorite();
+      window.localStorage.setItem('favorited', JSON.stringify(localStorage));
+      this.handleFavoriteState();
+    });
   }
 
   render() {

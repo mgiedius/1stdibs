@@ -30,7 +30,8 @@ function shopReducer(state = initialState.shop, action) {
           fetching: false,
           fetched: true,
           items: [...state.products.items, ...action.payload.items],
-          isLoadMore: state.products.items.length + action.payload.items.length < action.payload.totalItems,
+          isLoadMore: state.products.items.length + action.payload.items.length <
+                        action.payload.totalItems,
           totalItems: action.payload.totalItems,
         },
       };

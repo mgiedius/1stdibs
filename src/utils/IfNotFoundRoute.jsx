@@ -19,7 +19,10 @@ const IfNotFoundRoute =
 
 IfNotFoundRoute.propTypes = {
   component: PropTypes.func.isRequired,
-  isNotFound: PropTypes.bool,
+  isNotFound: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
 
 IfNotFoundRoute.defaultProps = {

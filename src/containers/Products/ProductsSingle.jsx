@@ -50,11 +50,11 @@ class ProductsSingle extends Component {
   }
 
   handleMakeOffer() {
-    alert('Successfully made an offer!');
+    alert(`Successfully made an offer! ${this.props.product.item.seller.company}`); // eslint-disable-line no-alert
   }
 
   handlePurchase() {
-    alert('Successfully bought!');
+    alert(`Successfully bought! ${this.props.product.item.seller.company}`); // eslint-disable-line no-alert
   }
 
   render() {
